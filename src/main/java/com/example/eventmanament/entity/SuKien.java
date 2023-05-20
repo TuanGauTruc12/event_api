@@ -5,30 +5,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "SUKIEN")
 public class SuKien {
 	@Id
 	@GeneratedValue
 	@Column(name = "MASK")
 	private int maSuKien;
-	
+
 	@Column(name = "TENSK")
 	private String tenSuKien;
-	
+
 	@Column(name = "HINHSK")
 	private String hinhSuKien;
-	
+
 	@Column(name = "MOTASK")
 	private String moTaSuKien;
-	
+
 	public SuKien() {
 	}
 
