@@ -18,5 +18,6 @@
 
 		<!-- Mapping đối tượng -->
 		<mapping class="com.example.eventmanament.entity.SuKien" />
+		<mapping class="com.example.eventmanament.entity.DichVu" />
     </session-factory>
 </hibernate-configuration>

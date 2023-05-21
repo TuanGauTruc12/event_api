@@ -5,8 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.eventmanament.entity.KhachHang;
 
-@Repository
-public interface KhachHangRepository //extends JpaRepository<KhachHang, Integer> {
-{}
-//}
+//@Repository
+public interface KhachHangRepository {
+//extends JpaRepository<KhachHang, Integer> {
+}
 
