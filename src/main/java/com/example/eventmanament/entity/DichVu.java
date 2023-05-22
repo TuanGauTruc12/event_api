@@ -1,10 +1,16 @@
 package com.example.eventmanament.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "DICHVU")
@@ -26,16 +32,8 @@ public class DichVu {
 	@Column(name = "GIA")
 	private int gia;
 
-	public DichVu() {
-	}
-
-	public DichVu(int maDichVu, String tenDichVu, int soLuong, String donViTinh, int gia) {
-		this.maDichVu = maDichVu;
-		this.tenDichVu = tenDichVu;
-		this.soLuong = soLuong;
-		this.donViTinh = donViTinh;
-		this.gia = gia;
-	}
+    @OneToMany(mappedBy = "dichVu")
+    private Set<ChiTietDichVu> chiTietDVs;
 
 	public int getMaDichVu() {
 		return maDichVu;

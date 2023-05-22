@@ -2,47 +2,65 @@ package com.example.eventmanament.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-//@Table(name = "CHITIETDV")
+@Entity
+@Table(name = "CHITIETDV")
+@IdClass(ChiTietDichVuId.class)
 public class ChiTietDichVu {
-	private int maHopDong;
-	private int maDichVu;
-	private Date ngaySuDung;
-	private int soLuongDichVua;
-	
-	public ChiTietDichVu() {
-	}
-	
-	public ChiTietDichVu(int maHopDong, int maDichVu, Date ngaySuDung, int soLuongDichVua) {
-		this.maHopDong = maHopDong;
-		this.maDichVu = maDichVu;
-		this.ngaySuDung = ngaySuDung;
-		this.soLuongDichVua = soLuongDichVua;
-	}
 
-	public int getMaHopDong() {
-		return maHopDong;
-	}
-	public void setMaHopDong(int maHopDong) {
-		this.maHopDong = maHopDong;
-	}
-	public int getMaDichVu() {
-		return maDichVu;
-	}
-	public void setMaDichVu(int maDichVu) {
-		this.maDichVu = maDichVu;
-	}
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "MADV")
+	private DichVu dichVu;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "MAHD")
+	private HopDong hopDong;
+	
+	
+	@Column(name = "NGAYSD")
+	private Date ngaySuDung;
+
+	@Column(name = "SLDVCAN")
+	private int soLuongDichCan;
+
 	public Date getNgaySuDung() {
 		return ngaySuDung;
 	}
+
 	public void setNgaySuDung(Date ngaySuDung) {
 		this.ngaySuDung = ngaySuDung;
 	}
-	public int getSoLuongDichVua() {
-		return soLuongDichVua;
+
+	public int getSoLuongDichCan() {
+		return soLuongDichCan;
 	}
-	public void setSoLuongDichVua(int soLuongDichVua) {
-		this.soLuongDichVua = soLuongDichVua;
+
+	public void setSoLuongDichCan(int soLuongDichCan) {
+		this.soLuongDichCan = soLuongDichCan;
+	}
+
+	public DichVu getDichVu() {
+		return dichVu;
+	}
+
+	public void setDichVu(DichVu dichVu) {
+		this.dichVu = dichVu;
+	}
+
+	public HopDong getHopDong() {
+		return hopDong;
+	}
+
+	public void setHopDong(HopDong hopDong) {
+		this.hopDong = hopDong;
 	}
 }

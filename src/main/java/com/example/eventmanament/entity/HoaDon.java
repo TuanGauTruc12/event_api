@@ -2,25 +2,45 @@ package com.example.eventmanament.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "HOADONTT")
 public class HoaDon {
+	@Id
+	@GeneratedValue
+	@Column(name = "MATT")
 	private int maHoaDon;
+	
+	@Column(name = "NGAYLAP")
 	private Date ngayLap;
+	
+	@Column(name = "TONGTIEN")
 	private int tongTien;
-	private String maNhanVien;
-	private int maKhachHang;
-	private String maHopDong;
-
-	public HoaDon() {
-	}
-
-	public HoaDon(int maHoaDon, Date ngayLap, int tongTien, String maNhanVien, int maKhachHang, String maHopDong) {
-		this.maHoaDon = maHoaDon;
-		this.ngayLap = ngayLap;
-		this.tongTien = tongTien;
-		this.maNhanVien = maNhanVien;
-		this.maKhachHang = maKhachHang;
-		this.maHopDong = maHopDong;
-	}
+	
+	@ManyToOne
+    @JoinColumn(name = "MANV")
+	private NhanVien nhanVien;
+	
+	@ManyToOne
+    @JoinColumn(name = "MAKH")
+	private KhachHang khachHang;
+	
+	@ManyToOne
+    @JoinColumn(name = "hoaDons")
+	private HopDong hopDong;
 
 	public int getMaHoaDon() {
 		return maHoaDon;
@@ -46,27 +66,27 @@ public class HoaDon {
 		this.tongTien = tongTien;
 	}
 
-	public String getMaNhanVien() {
-		return maNhanVien;
+	public NhanVien getNhanVien() {
+		return nhanVien;
 	}
 
-	public void setMaNhanVien(String maNhanVien) {
-		this.maNhanVien = maNhanVien;
+	public void setNhanVien(NhanVien nhanVien) {
+		this.nhanVien = nhanVien;
 	}
 
-	public int getMaKhachHang() {
-		return maKhachHang;
+	public KhachHang getKhachHang() {
+		return khachHang;
 	}
 
-	public void setMaKhachHang(int maKhachHang) {
-		this.maKhachHang = maKhachHang;
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
 	}
 
-	public String getMaHopDong() {
-		return maHopDong;
+	public HopDong getHopDong() {
+		return hopDong;
 	}
 
-	public void setMaHopDong(String maHopDong) {
-		this.maHopDong = maHopDong;
+	public void setHopDong(HopDong hopDong) {
+		this.hopDong = hopDong;
 	}
 }

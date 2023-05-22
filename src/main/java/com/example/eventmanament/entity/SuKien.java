@@ -1,10 +1,17 @@
 package com.example.eventmanament.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "SUKIEN")
@@ -22,16 +29,9 @@ public class SuKien {
 
 	@Column(name = "MOTASK")
 	private String moTaSuKien;
-
-	public SuKien() {
-	}
-
-	public SuKien(int maSuKien, String tenSuKien, String hinhSuKien, String moTaSuKien) {
-		this.maSuKien = maSuKien;
-		this.tenSuKien = tenSuKien;
-		this.hinhSuKien = hinhSuKien;
-		this.moTaSuKien = moTaSuKien;
-	}
+	
+	@OneToMany(mappedBy = "suKien")
+	private Set<HopDong> suKiens = new HashSet<>();
 
 	public int getMaSuKien() {
 		return maSuKien;

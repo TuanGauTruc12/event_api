@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.eventmanament.entity.ChiTietDichVu;
 
-//@Repository
-public interface ChiTietDichVuRepository {
-//extends JpaRepository<ChiTietDichVu, Integer>{
+@Repository
+public interface ChiTietDichVuRepository extends JpaRepository<ChiTietDichVu, Integer>{
 
 }
