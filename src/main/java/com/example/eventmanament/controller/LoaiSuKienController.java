@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.eventmanament.entity.SuKien;
-import com.example.eventmanament.service.SuKienService;
+import com.example.eventmanament.entity.LoaiSuKien;
+import com.example.eventmanament.service.LoaiSuKienService;
 
 @RestController
-@RequestMapping("/events")
+@RequestMapping("/category-event")
 @CrossOrigin(origins = "http://localhost:3000")
-public class SuKienController {
+public class LoaiSuKienController {
+	
 	@Autowired
-	private SuKienService service;
+	private LoaiSuKienService service;
 	
 	@GetMapping("/")
-	public List<SuKien> findAllSuKiens() {
-		List<SuKien> suKiens = service.getSuKiens();
-		return suKiens;
+	public List<LoaiSuKien> findAllLoaiSuKiens() {
+		return service.getLoaiSuKiens();
 	}
 	
-    @GetMapping("/getSuKienByID/{id}")
-    public SuKien getSuKienByID(@PathVariable(name = "id") int id) {
-    	return service.getSuKienById(id);
+    @GetMapping("/getLoaiSuKienByID/{id}")
+    public LoaiSuKien getLoaiSuKienByID(@PathVariable(name = "id") int id) {
+    	return service.getLoaiSuKienById(id);
     }
 	
 	@PostMapping("/")
-	public void saveSuKien(@RequestBody SuKien suKien) {
-		service.saveSuKien(suKien);
+	public void saveLoaiSuKien(@RequestBody LoaiSuKien loaiSuKien) {
+		service.saveLoaiSuKien(loaiSuKien);
 	}
 	
     @PutMapping("/")
-    public void updateSuKien(@RequestBody SuKien suKien) {
-      service.updateSuKien(suKien);
+    public void updateSuKien(@RequestBody LoaiSuKien suKien) {
+      service.updateLoaiSuKien(suKien);
     }
     
     @DeleteMapping("/delete/{id}")
-    public void deleteSukien(@PathVariable(name = "id") int id) {
-        service.deleteSuKien(id);
+    public void deleteLoaiSuKien(@PathVariable(name = "id") int id) {
+        service.deleteLoaiSuKien(id);
     }
 }

@@ -7,11 +7,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "SUKIEN")
@@ -29,9 +28,76 @@ public class SuKien {
 
 	@Column(name = "MOTASK")
 	private String moTaSuKien;
-	
+
+	@Column(name = "NGAYTC")
+	private String ngayToChuc;
+
+	@Column(name = "DIADIEM")
+	private String diaDiem;
+
+	@Column(name = "TIN")
+	private String tin;
+
+	@Column(name = "ANH")
+	private String anh;
+
+	@Column(name = "NOIDUNG")
+	private String noiDung;
+
 	@OneToMany(mappedBy = "suKien")
-	private Set<HopDong> suKiens = new HashSet<>();
+	private Set<HopDong> hopDongs = new HashSet<>();
+
+	@ManyToOne
+	@JoinColumn(name = "MALOAISK")
+	private LoaiSuKien loaiSuKien;
+
+	public LoaiSuKien getLoaiSuKien() {
+		return loaiSuKien;
+	}
+
+	public void setLoaiSuKien(LoaiSuKien loaiSuKien) {
+		this.loaiSuKien = loaiSuKien;
+	}
+
+	public String getNgayToChuc() {
+		return ngayToChuc;
+	}
+
+	public void setNgayToChuc(String ngayToChuc) {
+		this.ngayToChuc = ngayToChuc;
+	}
+
+	public String getDiaDiem() {
+		return diaDiem;
+	}
+
+	public void setDiaDiem(String diaDiem) {
+		this.diaDiem = diaDiem;
+	}
+
+	public String getTin() {
+		return tin;
+	}
+
+	public void setTin(String tin) {
+		this.tin = tin;
+	}
+
+	public String getAnh() {
+		return anh;
+	}
+
+	public void setAnh(String anh) {
+		this.anh = anh;
+	}
+
+	public String getNoiDung() {
+		return noiDung;
+	}
+
+	public void setNoiDung(String noiDung) {
+		this.noiDung = noiDung;
+	}
 
 	public int getMaSuKien() {
 		return maSuKien;

@@ -16,7 +16,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor@Table(name = "KHACHHANG")
+@AllArgsConstructor
+@Table(name = "KHACHHANG")
 public class KhachHang {
 	@Id
 	@GeneratedValue
@@ -37,7 +38,7 @@ public class KhachHang {
 
 	@Column(name = "PASS")
 	private String password;
-	
+
 	@OneToMany(mappedBy = "khachHang")
 	private Set<HopDong> khachHangs = new HashSet<>();
 

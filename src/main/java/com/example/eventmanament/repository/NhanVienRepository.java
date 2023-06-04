@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.eventmanament.entity.NhanVien;
 
-//@Repository
-public interface NhanVienRepository {
-//extends JpaRepository<NhanVien, String>{
+@Repository
+public interface NhanVienRepository extends JpaRepository<NhanVien, String> {
 
 }

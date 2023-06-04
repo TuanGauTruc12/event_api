@@ -12,34 +12,44 @@ public class SuKienService {
 	@Autowired
 	private SuKienRepository repository;
 
-	public SuKien saveSuKien(SuKien SuKien) {
-		return repository.save(SuKien);
-	}
-	
-	public List<SuKien> saveSuKiens(List<SuKien> SuKiens) {
-		return repository.saveAll(SuKiens);
+	//add
+	public void saveSuKien(SuKien SuKien) {
+		repository.save(SuKien);
 	}
 
+	//get all
 	public List<SuKien> getSuKiens() {
 		return repository.findAll();
 	}
 
+	//get one
 	public SuKien getSuKienById(int id) {
 		return repository.findById(id).orElse(null);
 	}
 
-	// public SuKien getSuKienByName(String name) { // return
-	// repository.findByName(name); // }
+	//get search
+	/*
+	 public List<SuKien> getListByName(String name) { 
+		 return repository.findByName(name);
+	 }
+	 */
 
+	 //delete
 	public void deleteSuKien(int id) {
 		repository.deleteById(id);
 	}
 
-	public SuKien updateSuKien(SuKien SuKien) {
-		SuKien existingSuKien = repository.findById(SuKien.getMaSuKien()).orElse(null);
-		existingSuKien.setTenSuKien(SuKien.getTenSuKien());
-		existingSuKien.setMoTaSuKien(SuKien.getMoTaSuKien());
-		existingSuKien.setHinhSuKien(SuKien.getHinhSuKien());
-		return repository.save(existingSuKien);
+	//update
+	public void updateSuKien(SuKien suKien) {
+		SuKien existingSuKien = repository.findById(suKien.getMaSuKien()).orElse(null);
+		existingSuKien.setTenSuKien(suKien.getTenSuKien());
+		existingSuKien.setMoTaSuKien(suKien.getMoTaSuKien());
+		existingSuKien.setHinhSuKien(suKien.getHinhSuKien());
+		existingSuKien.setAnh(suKien.getAnh());
+		existingSuKien.setDiaDiem(suKien.getDiaDiem());
+		existingSuKien.setNgayToChuc(suKien.getNgayToChuc());
+		existingSuKien.setNoiDung(suKien.getNoiDung());
+		existingSuKien.setTin(suKien.getTin());
+		repository.save(existingSuKien);
 	}
 }
