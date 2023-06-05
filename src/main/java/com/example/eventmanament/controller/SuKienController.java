@@ -1,5 +1,6 @@
 package com.example.eventmanament.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,18 @@ public class SuKienController {
     public SuKien getSuKienByID(@PathVariable(name = "id") int id) {
     	return service.getSuKienById(id);
     }
+    
+	@GetMapping("/findByIdCategoryEvent/{idCategory}")
+	public List<SuKien> findAllSuKiensByCategoryEvent(@PathVariable(name = "idCategory") int idCategory) {
+		List<SuKien> suKiens = service.getSuKiens();
+		List<SuKien> sukiensByCategory = new ArrayList<>();
+		for (SuKien suKien : suKiens) {
+			if(suKien.getLoaiSuKien().getMaLoaiSuKien() == idCategory) {
+				sukiensByCategory.add(suKien);
+			}
+		}
+		return sukiensByCategory;
+	}
 	
 	@PostMapping("/")
 	public void saveSuKien(@RequestBody SuKien suKien) {
