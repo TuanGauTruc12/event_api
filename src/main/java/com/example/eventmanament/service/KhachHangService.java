@@ -27,13 +27,7 @@ public class KhachHangService {
 
 	// update
 	public KhachHang updateKhachHang(KhachHang khachHang) {
-		KhachHang existingKhachHang = repository.findById(khachHang.getMaKhachHang()).orElse(null);
-		existingKhachHang.setTenKhachHang(khachHang.getTenKhachHang());
-		existingKhachHang.setSoDienThoai(khachHang.getSoDienThoai());
-		existingKhachHang.setDiaChi(khachHang.getDiaChi());
-		existingKhachHang.setEmail(khachHang.getEmail());
-		existingKhachHang.setPassword(khachHang.getPassword());
-		return repository.save(existingKhachHang);
+		return repository.save(khachHang);
 	}
 	
 	public KhachHang findKhachHangByID(int maKhachHang) {
