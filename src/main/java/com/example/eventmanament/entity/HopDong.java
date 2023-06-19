@@ -1,58 +1,59 @@
 package com.example.eventmanament.entity;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "HOPDONG")
 public class HopDong {
 
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MAHD")
-	private String maHopDong;
-
-	@Column(name = "THOIGIANTC")
-	private Date thoiGianToChuc;
-
-	@Column(name = "DIADIEMTC")
-	private String diaDiemToChuc;
+	private int maHopDong;
 
 	@Column(name = "TIENCOC")
 	private int tienCoc;
 
 	@Column(name = "NGAYLAPHD")
-	private Date ngayLayHopDong;
-
-	@Column(name = "THOIGIANKETTHUC")
-	private Date thoiGianKetThuc;
+	private Date ngayLapHopDong;
 
 	@Column(name = "SOLUONGKHACHMOI")
 	private int soLuongKhachMoi;
 
-	@Column(name = "TENTOCHUC")
+	@Column(name = "TENTOCHUC", columnDefinition = "NVARCHAR(100)")
 	private String tenToChuc;
+	
+	@Column(name = "KINHPHI")
+	private int kinhPhi;
+	
+	@Column(name = "TRANGTHAI")
+	private boolean trangThai;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
+	@JsonBackReference
 	@JoinColumn(name = "MANV")
 	private NhanVien nhanVien;
 
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "MAKH")
 	private KhachHang khachHang;
 
@@ -60,33 +61,15 @@ public class HopDong {
 	@JoinColumn(name = "MASK")
 	private SuKien suKien;
 	
-
     @OneToMany(mappedBy = "hopDong")
-    private Set<ChiTietDichVu> chiTietDVs;
+    private Set<ChiTietDichVu> chiTietDVs = new HashSet<>();
     
-	
-	public String getMaHopDong() {
+	public int getMaHopDong() {
 		return maHopDong;
 	}
 
-	public void setMaHopDong(String maHopDong) {
+	public void setMaHopDong(int maHopDong) {
 		this.maHopDong = maHopDong;
-	}
-
-	public Date getThoiGianToChuc() {
-		return thoiGianToChuc;
-	}
-
-	public void setThoiGianToChuc(Date thoiGianToChuc) {
-		this.thoiGianToChuc = thoiGianToChuc;
-	}
-
-	public String getDiaDiemToChuc() {
-		return diaDiemToChuc;
-	}
-
-	public void setDiaDiemToChuc(String diaDiemToChuc) {
-		this.diaDiemToChuc = diaDiemToChuc;
 	}
 
 	public int getTienCoc() {
@@ -97,22 +80,14 @@ public class HopDong {
 		this.tienCoc = tienCoc;
 	}
 
-	public Date getNgayLayHopDong() {
-		return ngayLayHopDong;
+	public Date getNgayLapHopDong() {
+		return ngayLapHopDong;
 	}
 
-	public void setNgayLayHopDong(Date ngayLayHopDong) {
-		this.ngayLayHopDong = ngayLayHopDong;
+	public void setNgayLapHopDong(Date ngayLapHopDong) {
+		this.ngayLapHopDong = ngayLapHopDong;
 	}
-
-	public Date getThoiGianKetThuc() {
-		return thoiGianKetThuc;
-	}
-
-	public void setThoiGianKetThuc(Date thoiGianKetThuc) {
-		this.thoiGianKetThuc = thoiGianKetThuc;
-	}
-
+	
 	public int getSoLuongKhachMoi() {
 		return soLuongKhachMoi;
 	}
@@ -151,5 +126,21 @@ public class HopDong {
 
 	public void setSuKien(SuKien suKien) {
 		this.suKien = suKien;
+	}
+	
+	public boolean isTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(boolean trangThai) {
+		this.trangThai = trangThai;
+	}
+	
+	public int getKinhPhi() {
+		return kinhPhi;
+	}
+	
+	public void setKinhPhi(int kinhPhi) {
+		this.kinhPhi = kinhPhi;
 	}
 }

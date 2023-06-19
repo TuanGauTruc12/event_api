@@ -23,7 +23,7 @@ public class SuKienService {
 	}
 
 	//get one
-	public SuKien getSuKienById(int id) {
+	public SuKien getSuKienById(Long id) {
 		return repository.findById(id).orElse(null);
 	}
 
@@ -35,7 +35,7 @@ public class SuKienService {
 	 */
 
 	 //delete
-	public void deleteSuKien(int id) {
+	public void deleteSuKien(Long id) {
 		repository.deleteById(id);
 	}
 
@@ -48,6 +48,8 @@ public class SuKienService {
 		existingSuKien.setAnh(suKien.getAnh());
 		existingSuKien.setDiaDiem(suKien.getDiaDiem());
 		existingSuKien.setNgayToChuc(suKien.getNgayToChuc());
+		existingSuKien.setLoaiSuKien(suKien.getLoaiSuKien());
+		existingSuKien.setNgayKetThuc(suKien.getNgayKetThuc());
 		existingSuKien.setNoiDung(suKien.getNoiDung());
 		existingSuKien.setTin(suKien.getTin());
 		repository.save(existingSuKien);

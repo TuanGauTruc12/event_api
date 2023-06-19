@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.example.eventmanament.entity.SuKien;
 
 @Repository
-public interface SuKienRepository extends JpaRepository<SuKien, Integer> {
+public interface SuKienRepository extends JpaRepository<SuKien, Long> {
 	//List<SuKien> findByName(String TENSK);
 }

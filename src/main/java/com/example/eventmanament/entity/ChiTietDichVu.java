@@ -14,7 +14,6 @@ import jakarta.persistence.Table;
 @Table(name = "CHITIETDV")
 @IdClass(ChiTietDichVuId.class)
 public class ChiTietDichVu {
-
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "MADV")
@@ -24,13 +23,34 @@ public class ChiTietDichVu {
 	@ManyToOne
 	@JoinColumn(name = "MAHD")
 	private HopDong hopDong;
-	
-	
+
 	@Column(name = "NGAYSD")
 	private Date ngaySuDung;
 
 	@Column(name = "SLDVCAN")
-	private int soLuongDichCan;
+	private int soLuongDichVuCan;
+
+	@Column(name = "GHICHU")
+	private String ghiChu;
+	
+	@Column(name = "TONGTIEN")
+	private double tongTien;
+	
+	public double getTongTien() {
+		return tongTien;
+	}
+	
+	public void setTongTien(double tongTien) {
+		this.tongTien = tongTien;
+	}
+
+	public String getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
 
 	public Date getNgaySuDung() {
 		return ngaySuDung;
@@ -40,12 +60,12 @@ public class ChiTietDichVu {
 		this.ngaySuDung = ngaySuDung;
 	}
 
-	public int getSoLuongDichCan() {
-		return soLuongDichCan;
+	public int getSoLuongDichVuCan() {
+		return soLuongDichVuCan;
 	}
 
-	public void setSoLuongDichCan(int soLuongDichCan) {
-		this.soLuongDichCan = soLuongDichCan;
+	public void setSoLuongDichVuCan(int soLuongDichVuCan) {
+		this.soLuongDichVuCan = soLuongDichVuCan;
 	}
 
 	public DichVu getDichVu() {

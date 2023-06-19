@@ -3,20 +3,18 @@ package com.example.eventmanament.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "KHACHHANG")
 public class KhachHang {
 	@Id
@@ -39,9 +37,12 @@ public class KhachHang {
 	@Column(name = "PASS")
 	private String password;
 
+	@Column(name = "HINHANH")
+	private String image;
+	
 	@OneToMany(mappedBy = "khachHang")
-	private Set<HopDong> khachHangs = new HashSet<>();
-
+	private Set<HopDong> hopDongs = new HashSet<>();
+	
 	public int getMaKhachHang() {
 		return maKhachHang;
 	}
@@ -89,12 +90,20 @@ public class KhachHang {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Set<HopDong> getKhachHangs() {
-		return khachHangs;
+	
+	public String getImage() {
+		return image;
 	}
 
-	public void setKhachHangs(Set<HopDong> khachHangs) {
-		this.khachHangs = khachHangs;
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	public Set<HopDong> getHopDongs() {
+		return hopDongs;
+	}
+	
+	public void setHopDongs(Set<HopDong> hopDongs) {
+		this.hopDongs = hopDongs;
 	}
 }

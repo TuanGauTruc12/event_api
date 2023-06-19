@@ -3,6 +3,8 @@ package com.example.eventmanament.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class NhanVien {
 
 	@Id
-	@Column(name = "MANV")
+	@Column(name = "MANV", columnDefinition = "VARCHAR(10)")
 	private String maNhanVien;
 
 	@Column(name = "HOTENNV")
@@ -29,11 +31,11 @@ public class NhanVien {
 	@Column(name = "CHUCVU")
 	private String chucVu;
 
-	@Column(name = "SDTNV")
+	@Column(name = "SDTNV", columnDefinition = "VARCHAR(10)")
 	private String soDienThoai;
 
-	@OneToMany(mappedBy = "nhanVien")
-	private Set<HoaDon> hoaDons = new HashSet<>();
+	//@OneToMany(mappedBy = "nhanVien")
+	//private Set<HoaDon> hoaDons = new HashSet<>();
 
 	@OneToMany(mappedBy = "nhanVien")
 	private Set<HopDong> hopDongs = new HashSet<>();
@@ -70,6 +72,7 @@ public class NhanVien {
 		this.soDienThoai = soDienThoai;
 	}
 
+	/*
 	public Set<HoaDon> getHoaDons() {
 		return hoaDons;
 	}
@@ -77,6 +80,7 @@ public class NhanVien {
 	public void setHoaDons(Set<HoaDon> hoaDons) {
 		this.hoaDons = hoaDons;
 	}
+	*/
 
 	public Set<HopDong> getHopDongs() {
 		return hopDongs;

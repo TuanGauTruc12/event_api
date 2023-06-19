@@ -6,6 +6,7 @@ import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,9 +17,9 @@ import jakarta.persistence.Table;
 @Table(name = "SUKIEN")
 public class SuKien {
 	@Id
-	@GeneratedValue
 	@Column(name = "MASK")
-	private int maSuKien;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long maSuKien;
 
 	@Column(name = "TENSK")
 	private String tenSuKien;
@@ -32,6 +33,9 @@ public class SuKien {
 	@Column(name = "NGAYTC")
 	private String ngayToChuc;
 
+	@Column(name = "NGAYKETTHUC")
+	private String ngayKetThuc;
+	
 	@Column(name = "DIADIEM")
 	private String diaDiem;
 
@@ -67,6 +71,14 @@ public class SuKien {
 		this.ngayToChuc = ngayToChuc;
 	}
 
+	public String getNgayKetThuc() {
+		return ngayKetThuc;
+	}
+
+	public void setNgayKetThuc(String ngayKetThuc) {
+		this.ngayKetThuc = ngayKetThuc;
+	}
+	
 	public String getDiaDiem() {
 		return diaDiem;
 	}
@@ -99,11 +111,11 @@ public class SuKien {
 		this.noiDung = noiDung;
 	}
 
-	public int getMaSuKien() {
+	public Long getMaSuKien() {
 		return maSuKien;
 	}
 
-	public void setMaSuKien(int maSuKien) {
+	public void setMaSuKien(Long maSuKien) {
 		this.maSuKien = maSuKien;
 	}
 
